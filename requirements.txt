@@ -1,0 +1,6 @@
+ConfigParser
+selenium>=3.14
+flake8
+autopep8
+behave
+behave-html-formatter
