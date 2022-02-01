@@ -4,9 +4,6 @@ testSuiteTimeout: 90
 testSuiteStep: 90
 retryOnFailure: true
 maxRetries: 5
-env:
- LT_USERNAME: himanshujlambdatest
- LT_ACCESS_KEY: zEGTJf8dFmJynRcgnd4mMUol1UPr4UJHRkVQH3IOMoCUCCPhOo
 matrix:
   os: [win]
   files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
