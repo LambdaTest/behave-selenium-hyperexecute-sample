@@ -285,88 +285,53 @@ uploadArtefacts:
 
 HyperTest also facilitates the provision to download the artefacts on your local machine. To download the artefacts, click on Artefacts button corresponding to the associated TestID.
 
-<img width="1406" alt="behave_cli1_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/152793083-e09403f9-6b8a-41a8-954f-bad2f539626e.png">
+<img width="1427" alt="behave_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/152794671-044cfe72-df63-4608-b8d4-91351c9f64ed.png">
 
 Now, you can download the artefacts by clicking on the Download button as shown below:
 
+<img width="1427" alt="behave_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/152794693-6f7f6300-7dd5-4ac9-8fa1-07685ed5e5db.png">
+
+### Test Execution
+
+The CLI option *--config* is used for providing the custom HyperTest YAML file (i.e. *yaml/behave_hypertest_autosplit_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperTest grid. The *--download-artifacts* option is used to inform HyperTest to download the artefacts for the job.
+
+```bash
+./concierge --download-artifacts --verbose --config yaml/behave_hypertest_autosplit_sample.yaml
+```
+
+Visit [HyperTest Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
+
+<img width="1414" alt="behave_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/152794671-044cfe72-df63-4608-b8d4-91351c9f64ed.png">
+
+Shown below is the execution screenshot when the YAML file is triggered from the terminal:
+
+<img width="1406" alt="behave_cli1_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/152793083-e09403f9-6b8a-41a8-954f-bad2f539626e.png">
+
 <img width="1402" alt="behave_cli2_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/152793111-4b0c4f6d-fc3b-4487-8a63-06cc71028ad1.png">
 
+## Secrets Management
 
+In case you want to use any secret keys in the YAML file, the same can be set by clicking on the *Secrets* button the dashboard.
 
+<img width="703" alt="behave_secrets_key_1" src="https://user-images.githubusercontent.com/1688653/152540968-90e4e8bc-3eb4-4259-856b-5e513cbd19b5.png">
 
+Now create *secrets* that you can use in the HyperTest YAML file.
 
+<img width="362" alt="behave_secrets_key_2" src="https://user-images.githubusercontent.com/1688653/152540977-436a8ba8-0ded-44db-8407-b3fb21b1f98d.png">
 
+## Navigation in Automation Dashboard
 
+HyperTest lets you navigate from/to *Test Logs* in Automation Dashboard from/to *HyperTest Logs*. You also get relevant get relevant Selenium test details like video, network log, commands, Exceptions & more in the Dashboard. Effortlessly navigate from the automation dashboard to HyperTest logs (and vice-versa) to get more details of the test execution.
 
+Shown below is the HyperTest Automation dashboard which also lists the tests that were executed as a part of the test suite:
 
+<img width="1238" alt="behave_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/152794671-044cfe72-df63-4608-b8d4-91351c9f64ed.png">
 
+Here is a screenshot that lists the automation test that was executed on the HyperTest grid:
 
+<img width="1427" alt="behave_testing_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/152795407-5dfdb323-3c13-4119-8b43-891d7affcb05.png">
 
-
-
-
-## Running tests in Behave using the Auto-Split strategy
-
-Auto-Split YAML file (behave_hypertest_autosplit_sample.yaml) in the repo contains the following configuration:
-
-```yaml
-globalTimeout: 90
-testSuiteTimeout: 90
-testSuiteStep: 90
-```
-
-Global timeout, testsuite timeout, and suite step timeout are each set to 90 minutes.
- 
-The *runson* key determines the platform (or operating system) on which the tests would be executed. Here we have set the target OS as macOS.
-
-```yaml
- runson: win
-```
-
-Auto-split is set to true in the YAML file. Retry on failure (*retryOnFailure*) is set to False. When set to true, failed test execution will be retried until the *maxRetries* are exhausted (or test execution is successful). Concurrency (i.e. number of parallel sessions) is set to 2.
-
-```yaml
- autosplit: true
- retryOnFailure: true
- maxRetries: 5
- concurrency: 2
-```
-
-Content under the *pre* directive is the pre-condition that will be run before the tests are executed on Hypertest grid. The required packages are listed in *requirements.txt* All the required packages are also installed in this step using *pip3 install* command.
-
-```yaml
-# Dependency caching for Windows
-cacheKey: '{{ checksum "requirements.txt" }}'
-cacheDirectories:
-  - pip_cache
-pre:
-  - pip3 install -r requirements.txt --cache-dir pip_cache
-post:
-  - cat yaml/behave_hypertest_matrix_sample.yaml
-```
-
-The *testDiscoverer* contains the command that gives information about the feature files present in the current project. Here, we are fetching the list of *.feature* files that would be further executed using the *value* passed in the *testRunnerCommand*
-
-```bash
-grep -nri 'Feature' features -ir --include=\*.feature | sed 's/:.*//'
-```
-
-Running the above command on the terminal gives the list of feature files present in the features folder:
-
-```
-features/lt_selenium_playground.feature
-features/lt_todo_app.feature
-```
-
-The *testRunnerCommand* contains the command that is used for triggering the test. The output fetched from the *testDiscoverer* command acts as an input to the *testRunner* command.
-
-```
-behave -f json.pretty -o reports/test_report.json $test
-```
-Run the following command on the terminal to trigger the respective tests (using Behave) on the Hypertest grid.
-
-```bash
-./concierge --config behave_hypertest_autosplit_sample.yaml --verbose
-``` 
-
-Visit [Hypertest Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
+## We are here to help you :)
+* LambdaTest Support: [support@lambdatest.com](mailto:support@lambdatest.com)
+* Lambdatest HomePage: https://www.lambdatest.com
+* HyperTest HomePage: https://www.lambdatest.com/support/docs/getting-started-with-hypertest/
