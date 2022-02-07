@@ -1,22 +1,33 @@
 ---
+version: 0.1
 globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
-retryOnFailure: true
-maxRetries: 5
+
 matrix:
-  os: [win]
   files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
+
+runson: win
+
 # Dependency caching for Windows
 cacheKey: '{{ checksum "requirements.txt" }}'
 cacheDirectories:
   - pip_cache
-upload:
-  - reports/test_report.json
 # Details about HTML Formatter at https://pypi.org/project/behave-html-formatter/
 pre:
   -  pip3 install -r requirements.txt --cache-dir pip_cache
 post:
   - cat yaml/behave_hypertest_autosplit_sample.yaml
+
+mergeArtifacts: true
+
+uploadArtefacts:
+  [
+    {
+      "name": "reports",
+      "path": ["reports/**"]
+    }
+  ]
+
 testSuites:
   - behave -f json.pretty -o reports/test_report.json $files

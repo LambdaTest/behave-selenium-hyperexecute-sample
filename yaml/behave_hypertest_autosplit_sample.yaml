@@ -1,12 +1,17 @@
 ---
+version: 0.1
 globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
+
 runson: win
+
 autosplit: true
 retryOnFailure: true
+
 maxRetries: 5
 concurrency: 2
+
 # Dependency caching for Windows
 cacheKey: '{{ checksum "requirements.txt" }}'
 cacheDirectories:
@@ -17,7 +22,22 @@ post:
   - cat yaml/behave_hypertest_matrix_sample.yaml
 upload:
   - reports/test_report.json
+
+mergeArtifacts: true
+
+uploadArtefacts:
+  [
+    {
+      "name": "reports",
+      "path": ["reports/**"]
+    }
+  ]
+
 # Details about HTML Formatter at https://pypi.org/project/behave-html-formatter/
-testDiscoverer: grep -nri 'Feature' features -ir --include=\*.feature | sed 's/:.*//'
+testDiscovery:
+  type: raw
+  mode: dynamic
+  command: grep -nri 'Feature' features -ir --include=\*.feature | sed 's/:.*//'
+
 # Reports are generated in the pretty JSON format
 testRunnerCommand: behave -f json.pretty -o reports/test_report.json $test
