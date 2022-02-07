@@ -11,7 +11,7 @@
    - [Artefacts Management](#artefacts-management)
    - [Test Execution](#test-execution)
 
-* [Auto-Split Execution with Behave](#auto-split-execution-with-robot)
+* [Auto-Split Execution with Behave](#auto-split-execution-with-behave)
    - [Core](#core-1)
    - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching-1)
    - [Post Steps](#post-steps-1)
@@ -84,7 +84,7 @@ The target platform is set to Windows. Please set the *[runson]* key to *[mac]* 
 runson: win
 ```
 
-Feature files are located in the *features* folder (i.e. *lt_todo_app.feature* and *lt_selenium_playground.feature*). In the matrix YAML file, *files* specifies a list (or array) of *.robot* files that have to be executed on the HyperTest grid.
+Feature files are located in the *features* folder (i.e. *lt_todo_app.feature* and *lt_selenium_playground.feature*). In the matrix YAML file, *files* specifies a list (or array) of *.feature* files that have to be executed on the HyperTest grid.
 
 ```yaml
 files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
