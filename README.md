@@ -1,16 +1,16 @@
 <img height="100" alt="hypertest_logo" src="https://user-images.githubusercontent.com/1688653/153136695-f5292c75-5d2f-4c70-aeb5-0f00a6962730.png">
 
-HyperTest is a smart test orchestration platform to run end-to-end Selenium tests at the fastest speed possible. HyperTest lets you achieve an accelerated time to market by providing a test infrastructure that offers optimal speed, test orchestration, and detailed execution logs.
+HyperExecute is a smart test orchestration platform to run end-to-end Selenium tests at the fastest speed possible. HyperExecute lets you achieve an accelerated time to market by providing a test infrastructure that offers optimal speed, test orchestration, and detailed execution logs.
 
-The overall experience helps teams test code and fix issues at a much faster pace. HyperTest is configured using a YAML file. Instead of moving the Hub close to you, HyperTest brings the test scripts close to the Hub!
+The overall experience helps teams test code and fix issues at a much faster pace. HyperExecute is configured using a YAML file. Instead of moving the Hub close to you, HyperExecute brings the test scripts close to the Hub!
 
-* <b>HyperTest HomePage</b>: https://www.lambdatest.com/hypertest
+* <b>HyperExecute HomePage</b>: https://www.lambdatest.com/hypertest
 * <b>Lambdatest HomePage</b>: https://www.lambdatest.com
 * <b>LambdaTest Support</b>: [support@lambdatest.com](mailto:support@lambdatest.com)
 
-To know more about how HyperTest does intelligent Test Orchestration, do check out [HyperTest Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hypertest/)
+To know more about how HyperExecute does intelligent Test Orchestration, do check out [HyperExecute Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hypertest/)
 
-# How to run Selenium automation tests on HyperTest (using Behave framework)
+# How to run Selenium automation tests on HyperExecute (using Behave framework)
 
 * [Pre-requisites](#pre-requisites)
    - [Download Concierge](#download-concierge)
@@ -20,14 +20,14 @@ To know more about how HyperTest does intelligent Test Orchestration, do check o
    - [Core](#core)
    - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching)
    - [Post Steps](#post-steps)
-   - [Artefacts Management](#artefacts-management)
+   - [Artifacts Management](#artifacts-management)
    - [Test Execution](#test-execution)
 
 * [Auto-Split Execution with Behave](#auto-split-execution-with-behave)
    - [Core](#core-1)
    - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching-1)
    - [Post Steps](#post-steps-1)
-   - [Artefacts Management](#artefacts-management-1)
+   - [Artifacts Management](#artifacts-management-1)
    - [Test Execution](#test-execution-1)
 
 * [Secrets Management](#secrets-management)
@@ -35,11 +35,11 @@ To know more about how HyperTest does intelligent Test Orchestration, do check o
 
 # Pre-requisites
 
-Before using HyperTest, you have to download Concierge CLI corresponding to the host OS. Along with it, you also need to export the environment variables *LT_USERNAME* and *LT_ACCESS_KEY* that are available in the [LambdaTest Profile](https://accounts.lambdatest.com/detail/profile) page.
+Before using HyperExecute, you have to download Concierge CLI corresponding to the host OS. Along with it, you also need to export the environment variables *LT_USERNAME* and *LT_ACCESS_KEY* that are available in the [LambdaTest Profile](https://accounts.lambdatest.com/detail/profile) page.
 
 ## Download Concierge
 
-Concierge is a CLI for interacting and running the tests on the HyperTest Grid. Concierge provides a host of other useful features that accelerate test execution. In order to trigger tests using Concierge, you need to download the Concierge binary corresponding to the platform (or OS) from where the tests are triggered:
+Concierge is a CLI for interacting and running the tests on the HyperExecute Grid. Concierge provides a host of other useful features that accelerate test execution. In order to trigger tests using Concierge, you need to download the Concierge binary corresponding to the platform (or OS) from where the tests are triggered:
 
 Also, it is recommended to download the binary in the project's parent directory. Shown below is the location from where you can download the Concierge binary: 
 
@@ -74,9 +74,9 @@ set LT_ACCESS_KEY=LT_ACCESS_KEY
 
 # Matrix Execution with Behave
 
-Matrix-based test execution is used for running the same tests across different test (or input) combinations. The Matrix directive in HyperTest YAML file is a *key:value* pair where value is an array of strings.
+Matrix-based test execution is used for running the same tests across different test (or input) combinations. The Matrix directive in HyperExecute YAML file is a *key:value* pair where value is an array of strings.
 
-Also, the *key:value* pairs are opaque strings for HyperTest. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hypertest/#matrix-based-build-multiplexing)
+Also, the *key:value* pairs are opaque strings for HyperExecute. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hypertest/#matrix-based-build-multiplexing)
 
 ### Core
 
@@ -96,7 +96,7 @@ The target platform is set to Windows. Please set the *[runson]* key to *[mac]* 
 runson: win
 ```
 
-Feature files are located in the *features* folder (i.e. *lt_todo_app.feature* and *lt_selenium_playground.feature*). In the matrix YAML file, *files* specifies a list (or array) of *.feature* files that have to be executed on the HyperTest grid.
+Feature files are located in the *features* folder (i.e. *lt_todo_app.feature* and *lt_selenium_playground.feature*). In the matrix YAML file, *files* specifies a list (or array) of *.feature* files that have to be executed on the HyperExecute grid.
 
 ```yaml
 files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
@@ -145,11 +145,11 @@ post:
   - cat yaml/behave_hypertest_matrix_sample.yaml
 ```
 
-### Artefacts Management
+### Artifacts Management
 
-The *mergeArtifacts* directive (which is by default *false*) is set to *true* for merging the artefacts and combing artefacts generated under each task.
+The *mergeArtifacts* directive (which is by default *false*) is set to *true* for merging the artifacts and combing artifacts generated under each task.
 
-The *uploadArtefacts* directive informs HyperTest to upload artefacts [files, reports, etc.] generated after task completion. In the example, *path* consists of a regex for parsing the directory (i.e. *reports*) that contains the test reports.
+The *uploadArtefacts* directive informs HyperExecute to upload artifacts [files, reports, etc.] generated after task completion. In the example, *path* consists of a regex for parsing the directory (i.e. *reports*) that contains the test reports.
 
 ```yaml
 mergeArtifacts: true
@@ -163,23 +163,23 @@ uploadArtefacts:
   ]
 ```
 
-HyperTest also facilitates the provision to download the artefacts on your local machine. To download the artefacts, click on Artefacts button corresponding to the associated TestID.
+HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
 
 <img width="1423" alt="behave_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/152790522-ad149cca-1226-4285-ae7b-c843ed151286.png">
 
-Now, you can download the artefacts by clicking on the Download button as shown below:
+Now, you can download the artifacts by clicking on the Download button as shown below:
 
 <img width="1423" alt="behave_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/152790546-3fade60d-ce39-4b2b-b321-839718820995.png">
 
 ## Test Execution
 
-The CLI option *--config* is used for providing the custom HyperTest YAML file (i.e. *yaml/behave_hypertest_matrix_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperTest grid. The *--download-artifacts* option is used to inform HyperTest to download the artefacts for the job.
+The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/behave_hypertest_matrix_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
 
 ```bash
 ./concierge --download-artifacts --config --verbose yaml/behave_hypertest_matrix_sample.yaml
 ```
 
-Visit [HyperTest Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution:
+Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution:
 
 <img width="1414" alt="behave_matrix_execution" src="https://user-images.githubusercontent.com/1688653/152790522-ad149cca-1226-4285-ae7b-c843ed151286.png">
 
@@ -219,7 +219,7 @@ Auto-split is set to true in the YAML file.
  autosplit: true
 ``` 
 
-*retryOnFailure* is set to true, instructing HyperTest to retry failed command(s). The retry operation is carried out till the number of retries mentioned in *maxRetries* are exhausted or the command execution results in a *Pass*. In addition, the concurrency (i.e. number of parallel sessions) is set to 2.
+*retryOnFailure* is set to true, instructing HyperExecute to retry failed command(s). The retry operation is carried out till the number of retries mentioned in *maxRetries* are exhausted or the command execution results in a *Pass*. In addition, the concurrency (i.e. number of parallel sessions) is set to 2.
 
 ```yaml
 retryOnFailure: true
@@ -257,7 +257,7 @@ Steps (or commands) that need to run after the test execution are listed in the 
 
 ```yaml
 post:
-  - cat yaml/behave_hypertest_autpsplit_sample.yaml
+  - cat yaml/behave_hypertest_autosplit_sample.yaml
 ```
 
 The *testDiscovery* directive contains the command that gives details of the mode of execution, along with detailing the command that is used for test execution. Here, we are fetching the list of Python files that would be further executed using the *value* passed in the *testRunnerCommand*
@@ -277,11 +277,11 @@ The *testRunnerCommand* contains the command that is used for triggering the tes
 testRunnerCommand: behave -f json.pretty -o reports/test_report.json $test
 ```
 
-### Artefacts Management
+### Artifacts Management
 
-The *mergeArtifacts* directive (which is by default *false*) is set to *true* for merging the artefacts and combing artefacts generated under each task.
+The *mergeArtifacts* directive (which is by default *false*) is set to *true* for merging the artifacts and combing artifacts generated under each task.
 
-The *uploadArtefacts* directive informs HyperTest to upload artefacts [files, reports, etc.] generated after task completion. In the example, *path* consists of a regex for parsing the directory (i.e. *reports*) that contains the test reports.
+The *uploadArtefacts* directive informs HyperExecute to upload artifacts [files, reports, etc.] generated after task completion. In the example, *path* consists of a regex for parsing the directory (i.e. *reports*) that contains the test reports.
 
 ```yaml
 mergeArtifacts: true
@@ -295,23 +295,23 @@ uploadArtefacts:
   ]
 ```
 
-HyperTest also facilitates the provision to download the artefacts on your local machine. To download the artefacts, click on Artefacts button corresponding to the associated TestID.
+HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
 
 <img width="1427" alt="behave_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/152794671-044cfe72-df63-4608-b8d4-91351c9f64ed.png">
 
-Now, you can download the artefacts by clicking on the Download button as shown below:
+Now, you can download the artifacts by clicking on the Download button as shown below:
 
 <img width="1427" alt="behave_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/152794693-6f7f6300-7dd5-4ac9-8fa1-07685ed5e5db.png">
 
 ### Test Execution
 
-The CLI option *--config* is used for providing the custom HyperTest YAML file (i.e. *yaml/behave_hypertest_autosplit_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperTest grid. The *--download-artifacts* option is used to inform HyperTest to download the artefacts for the job.
+The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/behave_hypertest_autosplit_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
 
 ```bash
 ./concierge --download-artifacts --verbose --config yaml/behave_hypertest_autosplit_sample.yaml
 ```
 
-Visit [HyperTest Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
+Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
 
 <img width="1414" alt="behave_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/152794671-044cfe72-df63-4608-b8d4-91351c9f64ed.png">
 
@@ -327,7 +327,7 @@ In case you want to use any secret keys in the YAML file, the same can be set by
 
 <img width="703" alt="behave_secrets_key_1" src="https://user-images.githubusercontent.com/1688653/152540968-90e4e8bc-3eb4-4259-856b-5e513cbd19b5.png">
 
-Now create a *secret* key that you can use in the HyperTest YAML file.
+Now create a *secret* key that you can use in the HyperExecute YAML file.
 
 <img width="359" alt="secrets_management_1" src="https://user-images.githubusercontent.com/1688653/153250877-e58445d1-2735-409a-970d-14253991c69e.png">
 
@@ -340,20 +340,20 @@ env:
 
 ## Navigation in Automation Dashboard
 
-HyperTest lets you navigate from/to *Test Logs* in Automation Dashboard from/to *HyperTest Logs*. You also get relevant get relevant Selenium test details like video, network log, commands, Exceptions & more in the Dashboard. Effortlessly navigate from the automation dashboard to HyperTest logs (and vice-versa) to get more details of the test execution.
+HyperExecute lets you navigate from/to *Test Logs* in Automation Dashboard from/to *HyperExecute Logs*. You also get relevant get relevant Selenium test details like video, network log, commands, Exceptions & more in the Dashboard. Effortlessly navigate from the automation dashboard to HyperExecute logs (and vice-versa) to get more details of the test execution.
 
-Shown below is the HyperTest Automation dashboard which also lists the tests that were executed as a part of the test suite:
+Shown below is the HyperExecute Automation dashboard which also lists the tests that were executed as a part of the test suite:
 
 <img width="1238" alt="behave_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/152794671-044cfe72-df63-4608-b8d4-91351c9f64ed.png">
 
-Here is a screenshot that lists the automation test that was executed on the HyperTest grid:
+Here is a screenshot that lists the automation test that was executed on the HyperExecute grid:
 
 <img width="1427" alt="behave_testing_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/152795407-5dfdb323-3c13-4119-8b43-891d7affcb05.png">
 
 ## We are here to help you :)
 * LambdaTest Support: [support@lambdatest.com](mailto:support@lambdatest.com)
 * Lambdatest HomePage: https://www.lambdatest.com
-* HyperTest HomePage: https://www.lambdatest.com/support/docs/getting-started-with-hypertest/
+* HyperExecute HomePage: https://www.lambdatest.com/support/docs/getting-started-with-hypertest/
 
 ## License
 Licensed under the [MIT license](LICENSE).
