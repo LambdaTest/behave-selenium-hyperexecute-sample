@@ -22,7 +22,7 @@ cacheDirectories:
 pre:
   - pip3 install -r requirements.txt --cache-dir pip_cache
 post:
-  - cat yaml/behave_hypertest_matrix_sample.yaml
+  - cat yaml/behave_hyperexecute_matrix_sample.yaml
 upload:
   - reports/test_report.json
 
