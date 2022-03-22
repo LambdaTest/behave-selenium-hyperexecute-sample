@@ -8,14 +8,14 @@ The overall experience helps teams test code and fix issues at a much faster pac
 * <b>Lambdatest HomePage</b>: https://www.lambdatest.com
 * <b>LambdaTest Support</b>: [support@lambdatest.com](mailto:support@lambdatest.com)
 
-To know more about how HyperExecute does intelligent Test Orchestration, do check out [HyperExecute Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hypertest/)
+To know more about how HyperExecute does intelligent Test Orchestration, do check out [HyperExecute Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/)
 
 # How to run Selenium automation tests on HyperExecute (using Behave framework)
 
 * [Pre-requisites](#pre-requisites)
    - [Download Concierge](#download-concierge)
    - [Configure Environment Variables](#configure-environment-variables)
-   
+
 * [Matrix Execution with Behave](#matrix-execution-with-behave)
    - [Core](#core)
    - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching)
@@ -41,7 +41,7 @@ Before using HyperExecute, you have to download Concierge CLI corresponding to t
 
 Concierge is a CLI for interacting and running the tests on the HyperExecute Grid. Concierge provides a host of other useful features that accelerate test execution. In order to trigger tests using Concierge, you need to download the Concierge binary corresponding to the platform (or OS) from where the tests are triggered:
 
-Also, it is recommended to download the binary in the project's parent directory. Shown below is the location from where you can download the Concierge binary: 
+Also, it is recommended to download the binary in the project's parent directory. Shown below is the location from where you can download the Concierge binary:
 
 * Mac: https://downloads.lambdatest.com/concierge/darwin/concierge
 * Linux: https://downloads.lambdatest.com/concierge/linux/concierge
@@ -76,11 +76,11 @@ set LT_ACCESS_KEY=LT_ACCESS_KEY
 
 Matrix-based test execution is used for running the same tests across different test (or input) combinations. The Matrix directive in HyperExecute YAML file is a *key:value* pair where value is an array of strings.
 
-Also, the *key:value* pairs are opaque strings for HyperExecute. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hypertest/#matrix-based-build-multiplexing)
+Also, the *key:value* pairs are opaque strings for HyperExecute. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/#matrix-based-build-multiplexing)
 
 ### Core
 
-In the current example, matrix YAML file (*yaml/behave_hypertest_matrix_sample.yaml*) in the repo contains the following configuration:
+In the current example, matrix YAML file (*yaml/behave_hyperexecute_matrix_sample.yaml*) in the repo contains the following configuration:
 
 ```yaml
 globalTimeout: 90
@@ -90,7 +90,7 @@ testSuiteStep: 90
 
 Global timeout, testSuite timeout, and testSuite timeout are set to 90 minutes.
  
-The target platform is set to Windows. Please set the *[runson]* key to *[mac]* if the tests have to be executed on the macOS platform. 
+The target platform is set to Windows. Please set the *[runson]* key to *[mac]* if the tests have to be executed on the macOS platform.
 
 ```yaml
 runson: win
@@ -102,10 +102,10 @@ Feature files are located in the *features* folder (i.e. *lt_todo_app.feature* a
 files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
 ```
 
-*Steps* (i.e. *lt_to_do_steps.py* and *lt_selenium_playground_steps.py*) corresponding to the respective *features* are located in the *features/steps* folder. 
+*Steps* (i.e. *lt_to_do_steps.py* and *lt_selenium_playground_steps.py*) corresponding to the respective *features* are located in the *features/steps* folder.
 The *testSuites* object contains a list of commands (that can be presented in an array).
 
-Commands to execute the tests are put in an array (with a '-' preceding each item). The *behave* command is used for executing the feature files located in the *features* folder. 
+Commands to execute the tests are put in an array (with a '-' preceding each item). The *behave* command is used for executing the feature files located in the *features* folder.
 
 ```yaml
 testSuites:
@@ -138,11 +138,11 @@ pre:
 
 ### Post Steps
 
-Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/behave_hypertest_matrix_sample.yaml*
+Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/behave_hyperexecute_matrix_sample.yaml*
 
 ```yaml
 post:
-  - cat yaml/behave_hypertest_matrix_sample.yaml
+  - cat yaml/behave_hyperexecute_matrix_sample.yaml
 ```
 
 ### Artifacts Management
@@ -173,10 +173,10 @@ Now, you can download the artifacts by clicking on the Download button as shown 
 
 ## Test Execution
 
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/behave_hypertest_matrix_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/behave_hyperexecute_matrix_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
 
 ```bash
-./concierge --download-artifacts --config --verbose yaml/behave_hypertest_matrix_sample.yaml
+./concierge --download-artifacts --config --verbose yaml/behave_hyperexecute_matrix_sample.yaml
 ```
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution:
@@ -193,11 +193,11 @@ Shown below is the execution screenshot when the YAML file is triggered from the
 
 Auto-split execution mechanism lets you run tests at predefined concurrency and distribute the tests over the available infrastructure. Concurrency can be achieved at different levels - file, module, test suite, test, scenario, etc.
 
-For more information about auto-split execution, check out the [Auto-Split Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hypertest/#smart-auto-test-splitting)
+For more information about auto-split execution, check out the [Auto-Split Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/#smart-auto-test-splitting)
 
 ### Core
 
-Auto-split YAML file (*yaml/behave_hypertest_autosplit_sample.yaml*) in the repo contains the following configuration:
+Auto-split YAML file (*yaml/behave_hyperexecute_autosplit_sample.yaml*) in the repo contains the following configuration:
 
 ```yaml
 globalTimeout: 90
@@ -217,7 +217,7 @@ Auto-split is set to true in the YAML file.
 
 ```yaml
  autosplit: true
-``` 
+```
 
 *retryOnFailure* is set to true, instructing HyperExecute to retry failed command(s). The retry operation is carried out till the number of retries mentioned in *maxRetries* are exhausted or the command execution results in a *Pass*. In addition, the concurrency (i.e. number of parallel sessions) is set to 2.
 
@@ -253,11 +253,11 @@ pre:
 
 ### Post Steps
 
-Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/behave_hypertest_matrix_sample.yaml*
+Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/behave_hyperexecute_matrix_sample.yaml*
 
 ```yaml
 post:
-  - cat yaml/behave_hypertest_autosplit_sample.yaml
+  - cat yaml/behave_hyperexecute_autosplit_sample.yaml
 ```
 
 The *testDiscovery* directive contains the command that gives details of the mode of execution, along with detailing the command that is used for test execution. Here, we are fetching the list of Python files that would be further executed using the *value* passed in the *testRunnerCommand*
@@ -267,7 +267,7 @@ testDiscovery:
   type: raw
   mode: dynamic
   command: grep -nri 'Feature' features -ir --include=\*.feature | sed 's/:.*//'
-  
+
 testRunnerCommand: behave -f json.pretty -o reports/test_report.json $test
 ```
 
@@ -305,10 +305,10 @@ Now, you can download the artifacts by clicking on the Download button as shown 
 
 ### Test Execution
 
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/behave_hypertest_autosplit_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/behave_hyperexecute_autosplit_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
 
 ```bash
-./concierge --download-artifacts --verbose --config yaml/behave_hypertest_autosplit_sample.yaml
+./concierge --download-artifacts --verbose --config yaml/behave_hyperexecute_autosplit_sample.yaml
 ```
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
@@ -353,7 +353,7 @@ Here is a screenshot that lists the automation test that was executed on the Hyp
 ## We are here to help you :)
 * LambdaTest Support: [support@lambdatest.com](mailto:support@lambdatest.com)
 * Lambdatest HomePage: https://www.lambdatest.com
-* HyperExecute HomePage: https://www.lambdatest.com/support/docs/getting-started-with-hypertest/
+* HyperExecute HomePage: https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/
 
 ## License
 Licensed under the [MIT license](LICENSE).
