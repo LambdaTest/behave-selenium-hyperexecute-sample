@@ -29,12 +29,9 @@ upload:
 mergeArtifacts: true
 
 uploadArtefacts:
-  [
-    {
-      "name": "reports",
-      "path": ["reports/**"]
-    }
-  ]
+  - name: TestReports
+    path:
+    - reports/**
 
 # Details about HTML Formatter at https://pypi.org/project/behave-html-formatter/
 testDiscovery:
