@@ -25,12 +25,9 @@ post:
 mergeArtifacts: true
 
 uploadArtefacts:
-  [
-    {
-      "name": "reports",
-      "path": ["reports/**"]
-    }
-  ]
+  - name: TestReports
+    path:
+    - reports/**
 
 testSuites:
   - behave -f json.pretty -o reports/test_report.json $files
