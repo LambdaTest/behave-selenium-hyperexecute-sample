@@ -18,7 +18,8 @@ cacheDirectories:
   - pip_cache
 # Details about HTML Formatter at https://pypi.org/project/behave-html-formatter/
 pre:
-  -  pip3 install -r requirements.txt --cache-dir pip_cache
+  - mkdir pip_cache
+  - pip3 install -r requirements.txt --cache-dir pip_cache
 post:
   - cat yaml/behave_hyperexecute_autosplit_sample.yaml
 
