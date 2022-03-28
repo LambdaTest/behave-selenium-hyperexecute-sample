@@ -165,11 +165,11 @@ uploadArtefacts:
 
 HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
 
-<img width="1423" alt="behave_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/152790522-ad149cca-1226-4285-ae7b-c843ed151286.png">
+<img width="1423" alt="behave_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/160461271-7c43ed21-f26f-43f1-b71f-1d1514b8417c.png">
 
 Now, you can download the artifacts by clicking on the Download button as shown below:
 
-<img width="1423" alt="behave_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/152790546-3fade60d-ce39-4b2b-b321-839718820995.png">
+<img width="1423" alt="behave_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160461287-73bd1c7d-f7fd-4ad0-8992-908c5199e9b1.png">
 
 ## Test Execution
 
@@ -181,7 +181,7 @@ The CLI option *--config* is used for providing the custom HyperExecute YAML fil
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution:
 
-<img width="1414" alt="behave_matrix_execution" src="https://user-images.githubusercontent.com/1688653/152790522-ad149cca-1226-4285-ae7b-c843ed151286.png">
+<img width="1414" alt="behave_matrix_execution" src="https://user-images.githubusercontent.com/1688653/160461271-7c43ed21-f26f-43f1-b71f-1d1514b8417c.png">
 
 Shown below is the execution screenshot when the YAML file is triggered from the terminal:
 
@@ -297,11 +297,11 @@ uploadArtefacts:
 
 HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
 
-<img width="1427" alt="behave_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/152794671-044cfe72-df63-4608-b8d4-91351c9f64ed.png">
+<img width="1427" alt="behave_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/160461291-06b78378-9205-4fde-9a20-6337ba5ed63c.png">
 
 Now, you can download the artifacts by clicking on the Download button as shown below:
 
-<img width="1427" alt="behave_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/152794693-6f7f6300-7dd5-4ac9-8fa1-07685ed5e5db.png">
+<img width="1427" alt="behave_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160461293-c44772ac-a4d3-4de9-8c65-2406987ab4fe.png">
 
 ### Test Execution
 
@@ -313,7 +313,7 @@ The CLI option *--config* is used for providing the custom HyperExecute YAML fil
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
 
-<img width="1414" alt="behave_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/152794671-044cfe72-df63-4608-b8d4-91351c9f64ed.png">
+<img width="1414" alt="behave_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/160461291-06b78378-9205-4fde-9a20-6337ba5ed63c.png">
 
 Shown below is the execution screenshot when the YAML file is triggered from the terminal:
 
@@ -344,7 +344,7 @@ HyperExecute lets you navigate from/to *Test Logs* in Automation Dashboard from/
 
 Shown below is the HyperExecute Automation dashboard which also lists the tests that were executed as a part of the test suite:
 
-<img width="1238" alt="behave_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/152794671-044cfe72-df63-4608-b8d4-91351c9f64ed.png">
+<img width="1238" alt="behave_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/160461271-7c43ed21-f26f-43f1-b71f-1d1514b8417c.png">
 
 Here is a screenshot that lists the automation test that was executed on the HyperExecute grid:
 
