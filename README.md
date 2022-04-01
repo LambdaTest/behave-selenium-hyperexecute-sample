@@ -1,4 +1,4 @@
-<img height="100" alt="hypertest_logo" src="https://user-images.githubusercontent.com/1688653/159473714-384e60ba-d830-435e-a33f-730df3c3ebc6.png">
+<img height="100" alt="hyperexecute_logo" src="https://user-images.githubusercontent.com/1688653/159473714-384e60ba-d830-435e-a33f-730df3c3ebc6.png">
 
 HyperExecute is a smart test orchestration platform to run end-to-end Selenium tests at the fastest speed possible. HyperExecute lets you achieve an accelerated time to market by providing a test infrastructure that offers optimal speed, test orchestration, and detailed execution logs.
 
@@ -176,7 +176,7 @@ The CLI option *--config* is used for providing the custom HyperExecute YAML fil
 ./concierge --download-artifacts --config --verbose yaml/behave_hyperexecute_matrix_sample.yaml
 ```
 
-Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution:
+Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution:
 
 <img width="1414" alt="behave_matrix_execution" src="https://user-images.githubusercontent.com/1688653/160461271-7c43ed21-f26f-43f1-b71f-1d1514b8417c.png">
 
@@ -305,7 +305,7 @@ The CLI option *--config* is used for providing the custom HyperExecute YAML fil
 ./concierge --download-artifacts --verbose --config yaml/behave_hyperexecute_autosplit_sample.yaml
 ```
 
-Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
+Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution
 
 <img width="1414" alt="behave_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/160461291-06b78378-9205-4fde-9a20-6337ba5ed63c.png">
 
@@ -338,7 +338,7 @@ HyperExecute lets you navigate from/to *Test Logs* in Automation Dashboard from/
 
 Shown below is the HyperExecute Automation dashboard which also lists the tests that were executed as a part of the test suite:
 
-<img width="1238" alt="behave_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/160461271-7c43ed21-f26f-43f1-b71f-1d1514b8417c.png">
+<img width="1238" alt="behave_hyperexecute_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/160461271-7c43ed21-f26f-43f1-b71f-1d1514b8417c.png">
 
 Here is a screenshot that lists the automation test that was executed on the HyperExecute grid:
 
