@@ -1,6 +1,8 @@
 concierge
 concierge.exe
+hyperexecute.exe
 *.zip
 *.log
 artifacts
+artifacts-old
 logs

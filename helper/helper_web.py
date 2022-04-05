@@ -4,7 +4,7 @@ import os
 
 caps = {}
 
-def get_browser(browser, browser_version, platform):
+def get_browser(browser, browser_version):
     user_name = os.environ.get("LT_USERNAME")
     access_key = os.environ.get("LT_ACCESS_KEY")
 
@@ -12,7 +12,7 @@ def get_browser(browser, browser_version, platform):
     caps['build'] = "[LambdaTest] [Behave] Testing using Behave and Selenium"
     caps['browserName'] = browser
     caps['version'] = browser_version
-    caps['platform'] = platform
+    caps['platform'] = os.environ.get("TARGET_OS")
     caps['network'] = True
     caps['visual'] = True
     caps['video'] = True
@@ -30,5 +30,5 @@ def get_browser(browser, browser_version, platform):
     # Workaround - Disable HTTPS connection and use HTTP connection
     #remote_url = "http://" + "LT_USER_NAME" + ":" + "LT_ACCESS_KEY" \
     #            + "@hub.lambdatest.com/wd/hub"
-    remote_url = "https://" + user_name + ":" + access_key + "@hub.lambdatest.com/wd/hub" 
+    remote_url = "https://" + user_name + ":" + access_key + "@hub.lambdatest.com/wd/hub"
     return HelperFunc(webdriver.Remote(command_executor=remote_url, desired_capabilities=caps))

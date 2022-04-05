@@ -1,0 +1,34 @@
+---
+version: 0.1
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+
+matrix:
+  files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
+
+runson: win
+
+env:
+#  PAT: ${{ .secrets.testKey }}
+ TARGET_OS: Windows 10
+
+cacheKey: '{{ checksum "requirements.txt" }}'
+cacheDirectories:
+  - pip_cache
+# Details about HTML Formatter at https://pypi.org/project/behave-html-formatter/
+pre:
+  - mkdir pip_cache
+  - pip3 install -r requirements.txt --cache-dir pip_cache
+post:
+  - cat yaml/win/behave_hyperexecute_matrix_sample.yaml
+
+mergeArtifacts: true
+
+uploadArtefacts:
+  - name: TestReports
+    path:
+    - reports/**
+
+testSuites:
+  - behave -f json.pretty -o reports/test_report.json $files

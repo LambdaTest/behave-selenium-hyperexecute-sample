@@ -1,0 +1,44 @@
+---
+version: 0.1
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+
+runson: linux
+
+autosplit: true
+retryOnFailure: true
+
+maxRetries: 5
+concurrency: 2
+
+env:
+#  PAT: ${{ .secrets.testKey }}
+ TARGET_OS: LINUX
+
+cacheKey: '{{ checksum "requirements.txt" }}'
+cacheDirectories:
+  - pip_cache
+pre:
+  - mkdir pip_cache
+  - pip3 install -r requirements.txt --cache-dir pip_cache
+post:
+  - cat yaml/linux/behave_hyperexecute_autosplit_sample.yaml
+upload:
+  - reports/test_report.json
+
+mergeArtifacts: true
+
+uploadArtefacts:
+  - name: TestReports
+    path:
+    - reports/**
+
+# Details about HTML Formatter at https://pypi.org/project/behave-html-formatter/
+testDiscovery:
+  type: raw
+  mode: dynamic
+  command: grep -nri 'Feature' features -ir --include=\*.feature | sed 's/:.*//'
+
+# Reports are generated in the pretty JSON format
+testRunnerCommand: behave -f json.pretty -o reports/test_report.json $test

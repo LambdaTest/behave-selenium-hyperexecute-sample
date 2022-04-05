@@ -12,9 +12,12 @@ caps = {}
 def before_all(context):
     caps['browserName'] = context.config.userdata['browser']
     caps['version'] = context.config.userdata['browser_version']
-    caps['platform'] = context.config.userdata['platform']
+    # To ensure that the same test runs on multiple platforms,
+    # platform is read from the environment variable that is added
+    # in the YAML file
+    # caps['platform'] = context.config.userdata['platform']
 
-    helper_func = get_browser(caps['browserName'], caps['version'], caps['platform'])
+    helper_func = get_browser(caps['browserName'], caps['version'])
     context.helperfunc = helper_func
 
 def after_all(context):

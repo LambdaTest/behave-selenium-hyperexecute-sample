@@ -7,12 +7,12 @@ testSuiteStep: 90
 matrix:
   files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
 
-runson: win
+runson: mac
 
-# env:
+env:
 #  PAT: ${{ .secrets.testKey }}
+ TARGET_OS: MacOS Catalina
 
-# Dependency caching for Windows
 cacheKey: '{{ checksum "requirements.txt" }}'
 cacheDirectories:
   - pip_cache
@@ -21,7 +21,7 @@ pre:
   - mkdir pip_cache
   - pip3 install -r requirements.txt --cache-dir pip_cache
 post:
-  - cat yaml/behave_hyperexecute_matrix_sample.yaml
+  - cat yaml/mac/behave_hyperexecute_matrix_sample.yaml
 
 mergeArtifacts: true
 
