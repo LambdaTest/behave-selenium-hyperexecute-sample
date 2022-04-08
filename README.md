@@ -80,7 +80,7 @@ Also, the *key:value* pairs are opaque strings for HyperExecute. For more inform
 
 ### Core
 
-In the current example, matrix YAML file (*yaml/behave_hyperexecute_matrix_sample.yaml*) in the repo contains the following configuration:
+In the current example, matrix YAML file (*yaml/win/behave_hyperexecute_matrix_sample.yaml*) in the repo contains the following configuration:
 
 ```yaml
 globalTimeout: 90
@@ -138,11 +138,11 @@ pre:
 
 ### Post Steps
 
-Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/behave_hyperexecute_matrix_sample.yaml*
+Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/win/behave_hyperexecute_matrix_sample.yaml*
 
 ```yaml
 post:
-  - cat yaml/behave_hyperexecute_matrix_sample.yaml
+  - cat yaml/win/behave_hyperexecute_matrix_sample.yaml
 ```
 
 ### Artifacts Management
@@ -162,18 +162,18 @@ uploadArtefacts:
 
 HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
 
-<img width="1423" alt="behave_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/160461271-7c43ed21-f26f-43f1-b71f-1d1514b8417c.png">
+<img width="1423" alt="behave_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/162381830-ca705494-ffcf-4e40-bf0a-b1f6b9ab7f5c.png">
 
 Now, you can download the artifacts by clicking on the Download button as shown below:
 
-<img width="1423" alt="behave_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160461287-73bd1c7d-f7fd-4ad0-8992-908c5199e9b1.png">
+<img width="1423" alt="behave_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/162381839-14440a4a-7626-4454-91b4-622fb4dfc465.png">
 
 ## Test Execution
 
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/behave_hyperexecute_matrix_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/behave_hyperexecute_matrix_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
 
 ```bash
-./hyperexecute --download-artifacts --config --verbose yaml/behave_hyperexecute_matrix_sample.yaml
+./hyperexecute --download-artifacts --config --verbose yaml/win/behave_hyperexecute_matrix_sample.yaml
 ```
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution:
@@ -182,9 +182,9 @@ Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hype
 
 Shown below is the execution screenshot when the YAML file is triggered from the terminal:
 
-<img width="1423" alt="behave_cli1_execution" src="https://user-images.githubusercontent.com/1688653/152791630-44a1c98d-e1d1-4d82-9c1e-6a4cf00ed4d1.png">
+<img width="1423" alt="behave_cli1_execution" src="https://user-images.githubusercontent.com/1688653/162381867-d756c55c-1bb6-442a-8e85-e82434de2856.png">
 
-<img width="1406" alt="behave_cli2_execution" src="https://user-images.githubusercontent.com/1688653/152791655-a824a05f-0ea4-4c17-b3ac-ec7c095eebd0.png">
+<img width="1406" alt="behave_cli2_execution" src="https://user-images.githubusercontent.com/1688653/162381870-035d36ef-4753-4033-bcc9-8e87812626b6.png">
 
 ## Auto-Split Execution with Behave
 
@@ -194,7 +194,7 @@ For more information about auto-split execution, check out the [Auto-Split Getti
 
 ### Core
 
-Auto-split YAML file (*yaml/behave_hyperexecute_autosplit_sample.yaml*) in the repo contains the following configuration:
+Auto-split YAML file (*yaml/win/behave_hyperexecute_autosplit_sample.yaml*) in the repo contains the following configuration:
 
 ```yaml
 globalTimeout: 90
@@ -250,11 +250,11 @@ pre:
 
 ### Post Steps
 
-Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/behave_hyperexecute_matrix_sample.yaml*
+Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/win/behave_hyperexecute_matrix_sample.yaml*
 
 ```yaml
 post:
-  - cat yaml/behave_hyperexecute_autosplit_sample.yaml
+  - cat yaml/win/behave_hyperexecute_autosplit_sample.yaml
 ```
 
 The *testDiscovery* directive contains the command that gives details of the mode of execution, along with detailing the command that is used for test execution. Here, we are fetching the list of Python files that would be further executed using the *value* passed in the *testRunnerCommand*
@@ -291,29 +291,29 @@ uploadArtefacts:
 
 HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
 
-<img width="1427" alt="behave_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/160461291-06b78378-9205-4fde-9a20-6337ba5ed63c.png">
+<img width="1427" alt="behave_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/162381846-adc4620a-2f24-4203-ae0a-4d58cf6e25a9.png">
 
 Now, you can download the artifacts by clicking on the Download button as shown below:
 
-<img width="1427" alt="behave_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160461293-c44772ac-a4d3-4de9-8c65-2406987ab4fe.png">
+<img width="1427" alt="behave_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/162381849-a8a0c1ab-16a8-41b7-8f17-31c493dcd9f2.png">
 
 ### Test Execution
 
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/behave_hyperexecute_autosplit_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/behave_hyperexecute_autosplit_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
 
 ```bash
-./hyperexecute --download-artifacts --verbose --config yaml/behave_hyperexecute_autosplit_sample.yaml
+./hyperexecute --download-artifacts --verbose --config yaml/win/behave_hyperexecute_autosplit_sample.yaml
 ```
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution
 
-<img width="1414" alt="behave_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/160461291-06b78378-9205-4fde-9a20-6337ba5ed63c.png">
+<img width="1414" alt="behave_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/162381846-adc4620a-2f24-4203-ae0a-4d58cf6e25a9.png">
 
 Shown below is the execution screenshot when the YAML file is triggered from the terminal:
 
-<img width="1406" alt="behave_cli1_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/152793083-e09403f9-6b8a-41a8-954f-bad2f539626e.png">
+<img width="1406" alt="behave_cli1_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/162381853-1d818885-2375-4614-8fdc-50aa56942d66.png">
 
-<img width="1402" alt="behave_cli2_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/152793111-4b0c4f6d-fc3b-4487-8a63-06cc71028ad1.png">
+<img width="1402" alt="behave_cli2_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/162381859-9c5bc21c-b0a1-49dc-b67c-28b8d72147d3.png">
 
 ## Secrets Management
 
@@ -338,11 +338,11 @@ HyperExecute lets you navigate from/to *Test Logs* in Automation Dashboard from/
 
 Shown below is the HyperExecute Automation dashboard which also lists the tests that were executed as a part of the test suite:
 
-<img width="1238" alt="behave_hyperexecute_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/160461271-7c43ed21-f26f-43f1-b71f-1d1514b8417c.png">
+<img width="1238" alt="behave_hyperexecute_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/162381862-de75861e-f8ce-478b-8fee-1800f1e6c6f6.png">
 
 Here is a screenshot that lists the automation test that was executed on the HyperExecute grid:
 
-<img width="1427" alt="behave_testing_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/152795407-5dfdb323-3c13-4119-8b43-891d7affcb05.png">
+<img width="1427" alt="behave_testing_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/162381863-fae33282-2ce2-494a-bfbc-1b34c0d7ee16.png">
 
 ## We are here to help you :)
 * LambdaTest Support: [support@lambdatest.com](mailto:support@lambdatest.com)
