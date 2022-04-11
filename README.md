@@ -16,14 +16,14 @@ To know more about how HyperExecute does intelligent Test Orchestration, do chec
    - [Download HyperExecute CLI](#download-hyperexecute-cli)
    - [Configure Environment Variables](#configure-environment-variables)
 
-* [Matrix Execution with Behave](#matrix-execution-with-behave)
+* [Auto-Split Execution with Behave](#auto-split-execution-with-behave)
    - [Core](#core)
    - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching)
    - [Post Steps](#post-steps)
    - [Artifacts Management](#artifacts-management)
    - [Test Execution](#test-execution)
 
-* [Auto-Split Execution with Behave](#auto-split-execution-with-behave)
+* [Matrix Execution with Behave](#matrix-execution-with-behave)
    - [Core](#core-1)
    - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching-1)
    - [Post Steps](#post-steps-1)
@@ -71,152 +71,6 @@ For Windows:
 set LT_USERNAME=LT_USERNAME
 set LT_ACCESS_KEY=LT_ACCESS_KEY
 ```
-
-The <b>HYPERXECUTE_PLATFORM</b> environment variable must be set to the platform (or operating system) on which you wish to perform the test execution. Here are the values that can be assigned to HYPEREXECUTE_PLATFORM
-
-* win10 for Windows OS
-* linux for Linux OS
-* macOS Catalina for macOS
-
-Use the commands mentioned below, to set the HyperExecute Platform (i.e. HYPEREXECUTE_PLATFORM) to Linux, macOS, or Windows respectively:
-
-Host OS: Linux
-
-```bash
-export HYPERXECUTE_PLATFORM=win10
-export HYPERXECUTE_PLATFORM=linux
-export HYPERXECUTE_PLATFORM=macOS Catalina
-```
-
-Host OS: macOS
-
-```bash
-export HYPERXECUTE_PLATFORM=win10
-export HYPERXECUTE_PLATFORM=linux
-export HYPERXECUTE_PLATFORM=macOS Catalina
-```
-
-Host OS: Windows
-
-```bash
-set HYPERXECUTE_PLATFORM=wind10
-set HYPERXECUTE_PLATFORM=linux
-set HYPERXECUTE_PLATFORM=macOS Catalina
-```
-
-# Matrix Execution with Behave
-
-Matrix-based test execution is used for running the same tests across different test (or input) combinations. The Matrix directive in HyperExecute YAML file is a *key:value* pair where value is an array of strings.
-
-Also, the *key:value* pairs are opaque strings for HyperExecute. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/#matrix-based-build-multiplexing)
-
-### Core
-
-In the current example, matrix YAML file (*yaml/win/behave_hyperexecute_matrix_sample.yaml*) in the repo contains the following configuration:
-
-```yaml
-globalTimeout: 90
-testSuiteTimeout: 90
-testSuiteStep: 90
-```
-
-Global timeout, testSuite timeout, and testSuite timeout are set to 90 minutes.
- 
-The target platform is set to Windows. Please set the *[runson]* key to *[mac]* if the tests have to be executed on the macOS platform.
-
-```yaml
-runson: win
-```
-
-Feature files are located in the *features* folder (i.e. *lt_todo_app.feature* and *lt_selenium_playground.feature*). In the matrix YAML file, *files* specifies a list (or array) of *.feature* files that have to be executed on the HyperExecute grid.
-
-```yaml
-files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
-```
-
-*Steps* (i.e. *lt_to_do_steps.py* and *lt_selenium_playground_steps.py*) corresponding to the respective *features* are located in the *features/steps* folder.
-The *testSuites* object contains a list of commands (that can be presented in an array).
-
-Commands to execute the tests are put in an array (with a '-' preceding each item). The *behave* command is used for executing the feature files located in the *features* folder.
-
-```yaml
-testSuites:
-  - behave -f json.pretty -o reports/test_report.json $files
-```
-
-### Pre Steps and Dependency Caching
-
-Dependency caching is enabled in the YAML file to ensure that the package dependencies are not downloaded in subsequent runs. The first step is to set the Key used to cache directories.
-
-```yaml
-cacheKey: '{{ checksum "requirements.txt" }}'
-```
-
-Set the array of files & directories to be cached. In the example, all the packages will be cached in the *CacheDir* directory.
-
-```yaml
-cacheDirectories:
-  - pip_cache
-```
-
-Steps (or commands) that must run before the test execution are listed in the *pre* run step. In the example, the packages listed in *requirements.txt* are installed using the *pip3* command.
-
-The *--cache-dir* option is used for specifying the location of the directory used for caching the packages (i.e. *CacheDir*). It is important to note that downloaded cached packages are securely uploaded to a secure cloud before the execution environment is auto-purged after build completion. Please modify *requirements.txt* as per the project requirements.
-
-```yaml
-pre:
-  - pip3 install -r requirements.txt --cache-dir pip_cache
-```
-
-### Post Steps
-
-Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/win/behave_hyperexecute_matrix_sample.yaml*
-
-```yaml
-post:
-  - cat yaml/win/behave_hyperexecute_matrix_sample.yaml
-```
-
-### Artifacts Management
-
-The *mergeArtifacts* directive (which is by default *false*) is set to *true* for merging the artifacts and combing artifacts generated under each task.
-
-The *uploadArtefacts* directive informs HyperExecute to upload artifacts [files, reports, etc.] generated after task completion. In the example, *path* consists of a regex for parsing the directory (i.e. *reports*) that contains the test reports.
-
-```yaml
-mergeArtifacts: true
-
-uploadArtefacts:
-  - name: TestReports
-    path:
-    - reports/**
-```
-
-HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
-
-<img width="1423" alt="behave_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/162381830-ca705494-ffcf-4e40-bf0a-b1f6b9ab7f5c.png">
-
-Now, you can download the artifacts by clicking on the Download button as shown below:
-
-<img width="1423" alt="behave_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/162381839-14440a4a-7626-4454-91b4-622fb4dfc465.png">
-
-## Test Execution
-
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/behave_hyperexecute_matrix_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
-
-```bash
-./hyperexecute --download-artifacts --config --verbose yaml/win/behave_hyperexecute_matrix_sample.yaml
-```
-
-Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution:
-
-<img width="1414" alt="behave_matrix_execution" src="https://user-images.githubusercontent.com/1688653/160461271-7c43ed21-f26f-43f1-b71f-1d1514b8417c.png">
-
-Shown below is the execution screenshot when the YAML file is triggered from the terminal:
-
-<img width="1423" alt="behave_cli1_execution" src="https://user-images.githubusercontent.com/1688653/162381867-d756c55c-1bb6-442a-8e85-e82434de2856.png">
-
-<img width="1406" alt="behave_cli2_execution" src="https://user-images.githubusercontent.com/1688653/162381870-035d36ef-4753-4033-bcc9-8e87812626b6.png">
 
 ## Auto-Split Execution with Behave
 
@@ -331,10 +185,22 @@ Now, you can download the artifacts by clicking on the Download button as shown 
 
 ### Test Execution
 
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/behave_hyperexecute_autosplit_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/behave_hyperexecute_autosplit_sample.yaml* for Windows and *yaml/linux/behave_hyperexecute_autosplit_sample.yaml* for Linux).
+
+#### Execute Behave tests using Autosplit mechanism on Windows platform
+
+Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Windows. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
 
 ```bash
 ./hyperexecute --download-artifacts --verbose --config yaml/win/behave_hyperexecute_autosplit_sample.yaml
+```
+
+#### Execute Behave tests using Autosplit mechanism on Linux platform
+
+Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Linux. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+
+```bash
+./hyperexecute --download-artifacts --verbose --config yaml/linux/behave_hyperexecute_autosplit_sample.yaml
 ```
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution
@@ -346,6 +212,132 @@ Shown below is the execution screenshot when the YAML file is triggered from the
 <img width="1406" alt="behave_cli1_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/162381853-1d818885-2375-4614-8fdc-50aa56942d66.png">
 
 <img width="1402" alt="behave_cli2_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/162381859-9c5bc21c-b0a1-49dc-b67c-28b8d72147d3.png">
+
+# Matrix Execution with Behave
+
+Matrix-based test execution is used for running the same tests across different test (or input) combinations. The Matrix directive in HyperExecute YAML file is a *key:value* pair where value is an array of strings.
+
+Also, the *key:value* pairs are opaque strings for HyperExecute. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/#matrix-based-build-multiplexing)
+
+### Core
+
+In the current example, matrix YAML file (*yaml/win/behave_hyperexecute_matrix_sample.yaml*) in the repo contains the following configuration:
+
+```yaml
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+```
+
+Global timeout, testSuite timeout, and testSuite timeout are set to 90 minutes.
+ 
+The target platform is set to Windows. Please set the *[runson]* key to *[mac]* if the tests have to be executed on the macOS platform.
+
+```yaml
+runson: win
+```
+
+Feature files are located in the *features* folder (i.e. *lt_todo_app.feature* and *lt_selenium_playground.feature*). In the matrix YAML file, *files* specifies a list (or array) of *.feature* files that have to be executed on the HyperExecute grid.
+
+```yaml
+files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
+```
+
+*Steps* (i.e. *lt_to_do_steps.py* and *lt_selenium_playground_steps.py*) corresponding to the respective *features* are located in the *features/steps* folder.
+The *testSuites* object contains a list of commands (that can be presented in an array).
+
+Commands to execute the tests are put in an array (with a '-' preceding each item). The *behave* command is used for executing the feature files located in the *features* folder.
+
+```yaml
+testSuites:
+  - behave -f json.pretty -o reports/test_report.json $files
+```
+
+### Pre Steps and Dependency Caching
+
+Dependency caching is enabled in the YAML file to ensure that the package dependencies are not downloaded in subsequent runs. The first step is to set the Key used to cache directories.
+
+```yaml
+cacheKey: '{{ checksum "requirements.txt" }}'
+```
+
+Set the array of files & directories to be cached. In the example, all the packages will be cached in the *CacheDir* directory.
+
+```yaml
+cacheDirectories:
+  - pip_cache
+```
+
+Steps (or commands) that must run before the test execution are listed in the *pre* run step. In the example, the packages listed in *requirements.txt* are installed using the *pip3* command.
+
+The *--cache-dir* option is used for specifying the location of the directory used for caching the packages (i.e. *CacheDir*). It is important to note that downloaded cached packages are securely uploaded to a secure cloud before the execution environment is auto-purged after build completion. Please modify *requirements.txt* as per the project requirements.
+
+```yaml
+pre:
+  - pip3 install -r requirements.txt --cache-dir pip_cache
+```
+
+### Post Steps
+
+Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/win/behave_hyperexecute_matrix_sample.yaml*
+
+```yaml
+post:
+  - cat yaml/win/behave_hyperexecute_matrix_sample.yaml
+```
+
+### Artifacts Management
+
+The *mergeArtifacts* directive (which is by default *false*) is set to *true* for merging the artifacts and combing artifacts generated under each task.
+
+The *uploadArtefacts* directive informs HyperExecute to upload artifacts [files, reports, etc.] generated after task completion. In the example, *path* consists of a regex for parsing the directory (i.e. *reports*) that contains the test reports.
+
+```yaml
+mergeArtifacts: true
+
+uploadArtefacts:
+  - name: TestReports
+    path:
+    - reports/**
+```
+
+HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
+
+<img width="1423" alt="behave_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/162381830-ca705494-ffcf-4e40-bf0a-b1f6b9ab7f5c.png">
+
+Now, you can download the artifacts by clicking on the Download button as shown below:
+
+<img width="1423" alt="behave_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/162381839-14440a4a-7626-4454-91b4-622fb4dfc465.png">
+
+## Test Execution
+
+The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/behave_hyperexecute_matrix_sample.yaml* for Windows and *yaml/linux/behave_hyperexecute_matrix_sample.yaml* for Linux).
+
+#### Execute Behave tests using Matrix mechanism on Windows platform
+
+Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Windows. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+
+```bash
+./hyperexecute --download-artifacts --verbose --config yaml/win/behave_hyperexecute_matrix_sample.yaml
+```
+
+#### Execute Behave tests using Matrix mechanism on Linux platform
+
+Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Linux. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+
+```bash
+./hyperexecute --download-artifacts --verbose --config yaml/linux/behave_hyperexecute_matrix_sample.yaml
+```
+
+Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution:
+
+<img width="1414" alt="behave_matrix_execution" src="https://user-images.githubusercontent.com/1688653/160461271-7c43ed21-f26f-43f1-b71f-1d1514b8417c.png">
+
+Shown below is the execution screenshot when the YAML file is triggered from the terminal:
+
+<img width="1423" alt="behave_cli1_execution" src="https://user-images.githubusercontent.com/1688653/162381867-d756c55c-1bb6-442a-8e85-e82434de2856.png">
+
+<img width="1406" alt="behave_cli2_execution" src="https://user-images.githubusercontent.com/1688653/162381870-035d36ef-4753-4033-bcc9-8e87812626b6.png">
 
 ## Secrets Management
 
