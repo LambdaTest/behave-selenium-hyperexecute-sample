@@ -28,8 +28,8 @@ def enter_items_in_form(context):
     name = context.helperfunc.find_by_xpath("//input[@id='name']")
     name.send_keys("Testing")
 
-   email_address = context.helperfunc.find_by_css_selector("#inputEmail4")
-   email_address.send_keys("testing@testing.com")
+    email_address = context.helperfunc.find_by_css_selector("#inputEmail4")
+    email_address.send_keys("testing@testing.com")
 
     password = context.helperfunc.find_by_xpath("//input[@name='password']")
     password.send_keys("password")
