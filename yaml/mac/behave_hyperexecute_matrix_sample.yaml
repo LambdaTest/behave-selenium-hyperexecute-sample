@@ -8,6 +8,9 @@ matrix:
   files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
 
 runson: mac
+retryOnFailure: true
+
+maxRetries: 1
 
 env:
 #  PAT: ${{ .secrets.testKey }}
