@@ -41,3 +41,5 @@ testDiscovery:
 
 # Reports are generated in the pretty JSON format
 testRunnerCommand: behave -f json.pretty -o reports/test_report.json $test
+
+jobLabel: [selenium-behave, mac, autosplit]

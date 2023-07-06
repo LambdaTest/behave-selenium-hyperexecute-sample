@@ -34,3 +34,5 @@ uploadArtefacts:
 
 testSuites:
   - behave -f json.pretty -o reports/test_report.json $files
+
+jobLabel: [selenium-behave, linux, matrix]
