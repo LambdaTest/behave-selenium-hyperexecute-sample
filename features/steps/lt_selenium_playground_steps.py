@@ -61,7 +61,7 @@ def enter_items_in_form(context):
 @when('I click submit button')
 def click_on_submit_button(context):
     # Click on the Submit button
-    submit_button = context.helperfunc.find_by_css_selector(".btn")
+    submit_button = context.helperfunc.find_by_css_selector("#seleniumform > div.text-right.mt-20 > button")
     submit_button.click()
 
 @then('I should verify if form submission was successful')
