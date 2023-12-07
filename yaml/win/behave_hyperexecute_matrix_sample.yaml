@@ -32,6 +32,12 @@ uploadArtefacts:
     path:
     - reports/**
 
+report: true
+partialReports:
+    type: json
+    location: /
+    frameworkName: extent
+
 testSuites:
   - behave -f json.pretty -o reports/test_report.json $files
 
