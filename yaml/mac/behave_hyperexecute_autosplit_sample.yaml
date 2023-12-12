@@ -33,6 +33,12 @@ uploadArtefacts:
     path:
     - reports/**
 
+report: true
+partialReports:
+    type: json
+    location: /
+    frameworkName: extent
+
 # Details about HTML Formatter at https://pypi.org/project/behave-html-formatter/
 testDiscovery:
   type: raw
