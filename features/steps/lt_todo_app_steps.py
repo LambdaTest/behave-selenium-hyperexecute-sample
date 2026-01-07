@@ -11,7 +11,7 @@ urllib3.disable_warnings()
 @given('I go to 4davanceboy to add item')
 def step(context):
     context.helperfunc.open('https://lambdatest.github.io/sample-todo-app/')
-    context.helperfunc.maximize()
+    # context.helperfunc.maximize() # This will not work for linux since there is open issue with webdriver for this. 
 
 @then('I Click on first checkbox and second checkbox')
 def click_on_checkbox_one(context):
@@ -28,7 +28,7 @@ def click_on_add_button(context):
 
 @then('I should verify the added item')
 def see_login_message(context):
-    added_item = context.helperfunc.find_by_xpath("//span[@class='done-false']").text
+    added_item = context.helperfunc.find_by_xpath("//input[@name='li6']/following-sibling::span").text
 
     time.sleep(10)
 

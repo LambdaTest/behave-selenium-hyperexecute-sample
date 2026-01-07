@@ -15,7 +15,7 @@ urllib3.disable_warnings()
 @given('I go to Selenium playground home page')
 def step(context):
     context.helperfunc.open('https://www.lambdatest.com/selenium-playground/')
-    context.helperfunc.maximize()
+    # context.helperfunc.maximize() # This will not work for linux since there is open issue with webdriver for this. 
 
 @then('I Click on Input Form Link')
 def click_on_submit_link(context):
