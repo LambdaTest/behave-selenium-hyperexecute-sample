@@ -1,5 +1,5 @@
 ConfigParser
-selenium>=3.14
+selenium>=4.27.0
 flake8
 autopep8
 behave
