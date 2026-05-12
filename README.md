@@ -4,20 +4,21 @@ HyperExecute is a smart test orchestration platform to run end-to-end Selenium t
 
 The overall experience helps teams test code and fix issues at a much faster pace. HyperExecute is configured using a YAML file. Instead of moving the Hub close to you, HyperExecute brings the test scripts close to the Hub!
 
-* <b>HyperExecute HomePage</b>: https://www.lambdatest.com/hyperexecute
-* <b>Lambdatest HomePage</b>: https://www.lambdatest.com
-* <b>LambdaTest Support</b>: [support@lambdatest.com](mailto:support@lambdatest.com)
+* <b>HyperExecute HomePage</b>: https://www.testmuai.com/hyperexecute
+* <b>TestMu AI HomePage</b>: https://www.testmuai.com
+* <b>TestMu AI Support</b>: [support@testmuai.com](mailto:support@testmuai.com)
 
-To know more about how HyperExecute does intelligent Test Orchestration, do check out [HyperExecute Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/)
+To know more about how HyperExecute does intelligent Test Orchestration, do check out [HyperExecute Getting Started Guide](https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/)
 
 [<img alt="Try it now" width="200 px" align="center" src="images/Try it Now.svg" />](https://hyperexecute.lambdatest.com/?utm_source=github&utm_medium=repository&utm_content=python&utm_term=behave)
+
 
 ## Gitpod
 
 Follow the below steps to run Gitpod button:
 
 1. Click '**Open in Gitpod**' button (You will be redirected to Login/Signup page).
-2. Login with Lambdatest credentials and it will be redirected to Gitpod editor in new tab and current tab will show hyperexecute dashboard.
+2. Login with TestMu AI credentials and it will be redirected to Gitpod editor in new tab and current tab will show hyperexecute dashboard.
 
 [<img alt="Run in Gitpod" width="200 px" align="center" src="images/Gitpod.svg" />](https://hyperexecute.lambdatest.com/hyperexecute/jobs?type=gitpod&framework=Behave)
 ---
@@ -28,7 +29,7 @@ If not logged in, it will be redirected to Login/Signup page and simultaneously 
 
 If not signed up, you need to sign up and simultaneously redirected to Gitpod in a new tab where current tab will show hyperexecute dashboard.--->
 
-# How to run Selenium automation tests on HyperExecute (using Behave framework)
+# How to run Selenium automation tests on HyperExecute (using Behave framework) — TestMu AI (Formerly LambdaTest)
 
 * [Pre-requisites](#pre-requisites)
    - [Download HyperExecute CLI](#download-hyperexecute-cli)
@@ -53,7 +54,8 @@ If not signed up, you need to sign up and simultaneously redirected to Gitpod in
 
 # Pre-requisites
 
-Before using HyperExecute, you have to download HyperExecute CLI corresponding to the host OS. Along with it, you also need to export the environment variables *LT_USERNAME* and *LT_ACCESS_KEY* that are available in the [LambdaTest Profile](https://accounts.lambdatest.com/detail/profile) page.
+Before using HyperExecute, you have to download HyperExecute CLI corresponding to the host OS. Along with it, you also need to export the environment variables *LT_USERNAME* and *LT_ACCESS_KEY* that are available in the [TestMu AI Profile](https://accounts.lambdatest.com/detail/profile) page.
+
 
 ## Download HyperExecute CLI
 
@@ -65,9 +67,10 @@ Also, it is recommended to download the binary in the project's parent directory
 * Linux: https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute
 * Windows: https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe
 
+
 ## Configure Environment Variables
 
-Before the tests are run, please set the environment variables LT_USERNAME & LT_ACCESS_KEY from the terminal. The account details are available on your [LambdaTest Profile](https://accounts.lambdatest.com/detail/profile) page.
+Before the tests are run, please set the environment variables LT_USERNAME & LT_ACCESS_KEY from the terminal. The account details are available on your [TestMu AI Profile](https://accounts.lambdatest.com/detail/profile) page.
 
 For macOS:
 
@@ -90,11 +93,12 @@ set LT_USERNAME=LT_USERNAME
 set LT_ACCESS_KEY=LT_ACCESS_KEY
 ```
 
+
 ## Auto-Split Execution with Behave
 
 Auto-split execution mechanism lets you run tests at predefined concurrency and distribute the tests over the available infrastructure. Concurrency can be achieved at different levels - file, module, test suite, test, scenario, etc.
 
-For more information about auto-split execution, check out the [Auto-Split Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/#smart-auto-test-splitting)
+For more information about auto-split execution, check out the [Auto-Split Getting Started Guide](https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/#smart-auto-test-splitting)
 
 ### Core
 
@@ -235,7 +239,7 @@ Shown below is the execution screenshot when the YAML file is triggered from the
 
 Matrix-based test execution is used for running the same tests across different test (or input) combinations. The Matrix directive in HyperExecute YAML file is a *key:value* pair where value is an array of strings.
 
-Also, the *key:value* pairs are opaque strings for HyperExecute. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/#matrix-based-build-multiplexing)
+Also, the *key:value* pairs are opaque strings for HyperExecute. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/#matrix-based-build-multiplexing)
 
 ### Core
 
@@ -327,6 +331,7 @@ Now, you can download the artifacts by clicking on the Download button as shown 
 
 <img width="1423" alt="behave_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/162381839-14440a4a-7626-4454-91b4-622fb4dfc465.png">
 
+
 ## Test Execution
 
 The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/behave_hyperexecute_matrix_sample.yaml* for Windows and *yaml/linux/behave_hyperexecute_matrix_sample.yaml* for Linux).
@@ -357,6 +362,7 @@ Shown below is the execution screenshot when the YAML file is triggered from the
 
 <img width="1406" alt="behave_cli2_execution" src="https://user-images.githubusercontent.com/1688653/162381870-035d36ef-4753-4033-bcc9-8e87812626b6.png">
 
+
 ## Secrets Management
 
 In case you want to use any secret keys in the YAML file, the same can be set by clicking on the *Secrets* button the dashboard.
@@ -374,6 +380,7 @@ env:
   PAT: ${{ .secrets.testKey }}
 ```
 
+
 ## Navigation in Automation Dashboard
 
 HyperExecute lets you navigate from/to *Test Logs* in Automation Dashboard from/to *HyperExecute Logs*. You also get relevant get relevant Selenium test details like video, network log, commands, Exceptions & more in the Dashboard. Effortlessly navigate from the automation dashboard to HyperExecute logs (and vice-versa) to get more details of the test execution.
@@ -386,24 +393,40 @@ Here is a screenshot that lists the automation test that was executed on the Hyp
 
 <img width="1427" alt="behave_testing_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/162381863-fae33282-2ce2-494a-bfbc-1b34c0d7ee16.png">
 
-## LambdaTest Community :busts_in_silhouette:
 
-The [LambdaTest Community](https://community.lambdatest.com/) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe.
+## TestMu AI Community :busts_in_silhouette:
+
+The [TestMu AI Community](https://community.testmuai.com/) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe.
+
 
 ## Documentation & Resources :books:
       
-If you want to learn more about the LambdaTest's features, setup, and usage, visit the [LambdaTest documentation](https://www.lambdatest.com/support/docs/). You can also find in-depth tutorials around test automation, mobile app testing, responsive testing, manual testing on [LambdaTest Blog](https://www.lambdatest.com/blog/) and [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/).     
+If you want to learn more about the TestMu AI's features, setup, and usage, visit the [TestMu AI documentation](https://www.testmuai.com/support/docs/). You can also find in-depth tutorials around test automation, mobile app testing, responsive testing, manual testing on [TestMu AI Blog](https://www.testmuai.com/blog/) and [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/).     
       
- ## About LambdaTest
+ ## 🚀 [LambdaTest is Now TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/)
 
-[LambdaTest](https://www.lambdatest.com) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.
+👋 Welcome to TestMu AI, the next evolution of LambdaTest. As of January 2026, LambdaTest has officially rebranded to TestMu AI. We have evolved from a cross-browser testing cloud into a unified, AI-native quality engineering platform designed for the modern DevOps era.
 
-[<img height="70" src="https://user-images.githubusercontent.com/70570645/169649126-ed61f6de-49b5-4593-80cf-3391ca40d665.PNG">](https://accounts.lambdatest.com/register)
-      
+Whether you have been part of the LambdaTest community for years or are just discovering TestMu AI, our mission remains the same: to help you ship faster with high-scale test execution, autonomous testing, and deep quality analytics.
+
+**🔄 Our Rebrand Journey**
+
+We chose the name TestMu AI to reflect our shift towards intelligent, autonomous testing. While our identity has changed, our core technology and commitment to the testing community stay the same.
+
+**✨ Specialties**
+
+- 🤖 AI-Native Test Execution (Formerly LambdaTest)
+- ⚡ Autonomous Test Automation
+- 🌐 Cross-Browser & Mobile Testing
+- 📊 Unified Quality Intelligence
+
+👉 Find [LambdaTest's New Home](https://www.testmuai.com/).
+
 ## We are here to help you :headphones:
 
-* Got a query? we are available 24x7 to help. [Contact Us](mailto:support@lambdatest.com)
-* For more info, visit - https://www.lambdatest.com
+* Got a query? we are available 24x7 to help. [Contact Us](mailto:support@testmuai.com)
+* For more info, visit - https://www.testmuai.com
+
 
 ## License
 Licensed under the [MIT license](LICENSE).
