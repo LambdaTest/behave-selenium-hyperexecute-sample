@@ -42,7 +42,7 @@ partialReports:
 
 testDiscovery:
   type: raw
-  mode: dynamic
+  mode: remote
   command: grep -nri 'Feature' features -ir --include=\*.feature | sed 's/:.*//'
 
 testRunnerCommand: behave -f json.pretty -o reports/test_report.json $test
