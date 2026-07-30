@@ -1,27 +1,37 @@
 ---
 version: 0.1
+
 globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
 
 matrix:
-  files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
+  files:
+    - features/lt_todo_app.feature
+    - features/lt_selenium_playground.feature
 
 runson: mac
-retryOnFailure: true
 
+runtime:
+  language: python
+  version: "3.11"
+
+retryOnFailure: true
 maxRetries: 1
 
 env:
-#  PAT: ${{ .secrets.testKey }}
- TARGET_OS: MacOS Catalina
+  # PAT: ${{ .secrets.testKey }}
+  TARGET_OS: MacOS Catalina
 
 cacheKey: '{{ checksum "requirements.txt" }}'
+
 cacheDirectories:
   - pip_cache
-# Details about HTML Formatter at https://pypi.org/project/behave-html-formatter/
+
 pre:
-  - pip3 install -r requirements.txt --cache-dir pip_cache
+  - python3 -m pip install --upgrade pip
+  - python3 -m pip install -r requirements.txt --cache-dir pip_cache
+
 post:
   - cat yaml/mac/behave_hyperexecute_matrix_sample.yaml
 
@@ -30,15 +40,19 @@ mergeArtifacts: true
 uploadArtefacts:
   - name: TestReports
     path:
-    - reports/**
+      - reports/**
 
 report: true
+
 partialReports:
-    type: json
-    location: /
-    frameworkName: extent
+  type: json
+  location: /
+  frameworkName: extent
 
 testSuites:
-  - behave -f json.pretty -o reports/test_report.json $files
+  - python3 -m behave -f json.pretty -o reports/test_report.json $files
 
-jobLabel: [selenium-behave, mac, matrix]
+jobLabel:
+  - selenium-behave
+  - mac
+  - matrix

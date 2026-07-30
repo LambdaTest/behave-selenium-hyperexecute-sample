@@ -9,3 +9,8 @@ artifacts
 hyperexecute
 hyperexecute-cli.log
 artifacts*/
+hyperexecute.exe
+.hyperexecute.exe.old
+hyperexecuteupdate
+hyperexecute-code-*.zip
+yaml/**/mask-*.yaml

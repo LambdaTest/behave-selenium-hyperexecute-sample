@@ -1,44 +1,58 @@
 ---
 version: 0.1
+
 globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
 
 matrix:
-  files: ["features/lt_todo_app.feature", "features/lt_selenium_playground.feature"]
+  files:
+    - features/lt_todo_app.feature
+    - features/lt_selenium_playground.feature
 
 runson: win
-retryOnFailure: true
 
+runtime:
+  language: python
+  version: "3.11"
+
+retryOnFailure: true
 maxRetries: 1
 
 env:
-#  PAT: ${{ .secrets.testKey }}
- TARGET_OS: Windows 10
+  # PAT: ${{ .secrets.testKey }}
+  TARGET_OS: Windows 10
 
 cacheKey: '{{ checksum "requirements.txt" }}'
+
 cacheDirectories:
   - pip_cache
-# Details about HTML Formatter at https://pypi.org/project/behave-html-formatter/
+
 pre:
-  - pip3 install -r requirements.txt --cache-dir pip_cache
+  - python -m pip install --upgrade pip
+  - python -m pip install -r requirements.txt --cache-dir pip_cache
+
 post:
-  - cat yaml/win/behave_hyperexecute_matrix_sample.yaml
+  - type yaml\win\behave_hyperexecute_matrix_sample.yaml
 
 mergeArtifacts: true
 
 uploadArtefacts:
   - name: TestReports
     path:
-    - reports/**
+      - reports/**
 
 report: true
+
 partialReports:
-    type: json
-    location: /
-    frameworkName: extent
+  type: json
+  location: /
+  frameworkName: extent
 
 testSuites:
-  - behave -f json.pretty -o reports/test_report.json $files
+  - python -m behave -f json.pretty -o reports/test_report.json $files
 
-jobLabel: [selenium-behave, win, matrix]
+jobLabel:
+  - selenium-behave
+  - win
+  - matrix
