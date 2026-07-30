@@ -1,10 +1,15 @@
 ---
 version: 0.1
+
 globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
 
 runson: mac
+
+runtime:
+  language: python
+  version: "3.11"
 
 autosplit: true
 retryOnFailure: true
@@ -13,16 +18,21 @@ maxRetries: 1
 concurrency: 2
 
 env:
-#  PAT: ${{ .secrets.testKey }}
- TARGET_OS: MacOS Catalina
+  # PAT: ${{ .secrets.testKey }}
+  TARGET_OS: MacOS Catalina
 
 cacheKey: '{{ checksum "requirements.txt" }}'
+
 cacheDirectories:
   - pip_cache
+
 pre:
-  - pip3 install -r requirements.txt --cache-dir pip_cache
+  - python3 -m pip install --upgrade pip
+  - python3 -m pip install -r requirements.txt --cache-dir pip_cache
+
 post:
   - cat yaml/mac/behave_hyperexecute_autosplit_sample.yaml
+
 upload:
   - reports/test_report.json
 
@@ -31,21 +41,23 @@ mergeArtifacts: true
 uploadArtefacts:
   - name: TestReports
     path:
-    - reports/**
+      - reports/**
 
 report: true
-partialReports:
-    type: json
-    location: /
-    frameworkName: extent
 
-# Details about HTML Formatter at https://pypi.org/project/behave-html-formatter/
+partialReports:
+  type: json
+  location: /
+  frameworkName: extent
+
 testDiscovery:
   type: raw
   mode: remote
-  command: grep -nri 'Feature' features -ir --include=\*.feature | sed 's/:.*//'
+  command: grep -nri 'Feature' features --include=\*.feature | sed 's/:.*//'
 
-# Reports are generated in the pretty JSON format
-testRunnerCommand: behave -f json.pretty -o reports/test_report.json $test
+testRunnerCommand: python3 -m behave -f json.pretty -o reports/test_report.json $test
 
-jobLabel: [selenium-behave, mac, autosplit]
+jobLabel:
+  - selenium-behave
+  - mac
+  - autosplit

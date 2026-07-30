@@ -1,38 +1,22 @@
-from selenium import webdriver
-import os
-from configparser import ConfigParser
-from selenium.webdriver.common.keys import Keys
-import time
 from behave import given, when, then
-import urllib3
 
-urllib3.disable_warnings()
+MESSAGE = "Welcome to TestMu AI"
 
-@given('I go to 4davanceboy to add item')
+@given("I open the Simple Form Demo page")
 def step(context):
-    context.helperfunc.open('https://lambdatest.github.io/sample-todo-app/')
-    # context.helperfunc.maximize() # This will not work for linux since there is open issue with webdriver for this. 
+    context.helperfunc.open(
+        "https://www.testmuai.com/selenium-playground/simple-form-demo"
+    )
 
-@then('I Click on first checkbox and second checkbox')
-def click_on_checkbox_one(context):
-    context.helperfunc.find_by_name('li1').click()
-    context.helperfunc.find_by_name('li2').click()
+@when("I enter a message")
+def step(context):
+    context.helperfunc.find_by_id("user-message").send_keys(MESSAGE)
 
-@when('I enter item to add')
-def enter_item_name(context):
-    context.helperfunc.find_by_id('sampletodotext').send_keys("Yey, Let's add it to list")
+@when("I click the Show Message button")
+def step(context):
+    context.helperfunc.find_by_id("showInput").click()
 
-@when('I click add button')
-def click_on_add_button(context):
-    context.helperfunc.find_by_id('addbutton').click()
-
-@then('I should verify the added item')
-def see_login_message(context):
-    added_item = context.helperfunc.find_by_xpath("//input[@name='li6']/following-sibling::span").text
-
-    time.sleep(10)
-
-    if added_item in "Yey, Let's add it to list":
-        return True
-    else:
-        return False
+@then("I should see the entered message")
+def step(context):
+    displayed = context.helperfunc.find_by_id("message").text
+    assert displayed == MESSAGE

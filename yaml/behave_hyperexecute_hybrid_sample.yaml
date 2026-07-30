@@ -1,9 +1,16 @@
+---
 version: 0.1
+
 globalTimeout: 150
 testSuiteTimeout: 150
 testSuiteStep: 150
 
 runson: ${matrix.os}
+
+runtime:
+  language: python
+  version: "3.11"
+
 retryOnFailure: false
 autosplit: true
 maxRetries: 1
@@ -11,18 +18,23 @@ parallelism: 2
 concurrency: 3
 
 matrix:
-  os: [mac, win, linux]
+  os:
+    - mac
+    - win
+    - linux
 
 env:
-#  PAT: ${{ .secrets.testKey }}
- TARGET_OS: ${matrix.os}
+  # PAT: ${{ .secrets.testKey }}
+  TARGET_OS: ${matrix.os}
 
 cacheKey: '{{ checksum "requirements.txt" }}'
+
 cacheDirectories:
   - pip_cache
 
 pre:
-  - pip3 install -r requirements.txt --cache-dir pip_cache
+  - python -m pip install --upgrade pip
+  - python -m pip install -r requirements.txt --cache-dir pip_cache
 
 post:
   - cat yaml/behave_hyperexecute_hybrid_sample.yaml
@@ -32,19 +44,22 @@ mergeArtifacts: true
 uploadArtefacts:
   - name: TestReports
     path:
-    - reports/**
+      - reports/**
 
 report: true
+
 partialReports:
-    type: json
-    location: /
-    frameworkName: extent
+  type: json
+  location: /
+  frameworkName: extent
 
 testDiscovery:
   type: raw
   mode: remote
   command: grep -nri 'Feature' features -ir --include=\*.feature | sed 's/:.*//'
 
-testRunnerCommand: behave -f json.pretty -o reports/test_report.json $test
+testRunnerCommand: python -m behave -f json.pretty -o reports/test_report.json $test
 
-jobLabel: [selenium-behave, hybrid]
+jobLabel:
+  - selenium-behave
+  - hybrid
