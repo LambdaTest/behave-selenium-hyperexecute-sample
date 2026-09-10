@@ -13,7 +13,7 @@
 With TestMu AI (Formerly LambdaTest), you can run Python Behave BDD tests on the HyperExecute cloud for blazing-fast distributed execution. This sample shows how to configure Behave with Selenium to run on the TestMu AI HyperExecute grid.
 
 - [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
-- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/behave-on-hyperexecute-grid/) for the full setup walkthrough.
+- Follow the [Run Behave tests on HyperExecute](https://www.testmuai.com/support/docs/behave-on-hyperexecute-grid/) for the full setup walkthrough.
 
 ### Prerequisites
 
