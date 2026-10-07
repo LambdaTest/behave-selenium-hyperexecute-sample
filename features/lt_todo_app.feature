@@ -1,8 +1,7 @@
-Feature: Test to add item
+Feature: Test Simple Form Demo
 
-Scenario: Test Advance boy
-  Given I go to 4davanceboy to add item
-  Then I Click on first checkbox and second checkbox
-  When I enter item to add
-  When I click add button
-  Then I should verify the added item
+  Scenario: Verify Simple Form Demo
+    Given I open the Simple Form Demo page
+    When I enter a message
+    And I click the Show Message button
+    Then I should see the entered message
