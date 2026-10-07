@@ -24,7 +24,6 @@ matrix:
     - linux
 
 env:
-  # PAT: ${{ .secrets.testKey }}
   TARGET_OS: ${matrix.os}
 
 cacheKey: '{{ checksum "requirements.txt" }}'

@@ -13,7 +13,6 @@ retryOnFailure: true
 maxRetries: 1
 
 env:
-#  PAT: ${{ .secrets.testKey }}
  TARGET_OS: LINUX
 
 cacheKey: '{{ checksum "requirements.txt" }}'

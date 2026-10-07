@@ -20,7 +20,6 @@ retryOnFailure: true
 maxRetries: 1
 
 env:
-  # PAT: ${{ .secrets.testKey }}
   TARGET_OS: Windows 10
 
 cacheKey: '{{ checksum "requirements.txt" }}'

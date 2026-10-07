@@ -18,7 +18,6 @@ maxRetries: 1
 concurrency: 2
 
 env:
-  # PAT: ${{ .secrets.testKey }}
   TARGET_OS: Windows 10
 
 cacheKey: '{{ checksum "requirements.txt" }}'

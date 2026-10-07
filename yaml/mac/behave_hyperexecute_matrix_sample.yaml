@@ -20,7 +20,6 @@ retryOnFailure: true
 maxRetries: 1
 
 env:
-  # PAT: ${{ .secrets.testKey }}
   TARGET_OS: MacOS Catalina
 
 cacheKey: '{{ checksum "requirements.txt" }}'
